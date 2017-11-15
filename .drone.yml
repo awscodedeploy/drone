@@ -2,4 +2,5 @@ pipeline:
   build:
     image: alpine
     commands:
-      - echo $${PWD}
+      - echo $name
+    secrets: [ name ]
