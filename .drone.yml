@@ -1,5 +1,5 @@
 pipeline:
-  build:
+  echoname:
     image: alpine
     commands:
       #- env
