@@ -8,4 +8,5 @@ pipeline:
       - apk add py-pip
       - pip install awscli
       - aws s3 ls
+      - aws s3 cp README.md s3://my-sandeep-state/
     secrets: [ NAME ]
