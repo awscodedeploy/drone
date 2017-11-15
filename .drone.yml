@@ -2,8 +2,6 @@ pipeline:
   echoname:
     image: alpine
     commands:
-      #- env
-      #- export
       - export MYNAME=$NAME
       - echo $${MYNAME}
     secrets: [ NAME ]
