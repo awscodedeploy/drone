@@ -4,6 +4,6 @@ pipeline:
     commands:
       #- env
       #- export
-      - export MYANME=$NAME
+      - export MYNAME=$NAME
       - echo $${MYNAME}
     secrets: [ NAME ]
