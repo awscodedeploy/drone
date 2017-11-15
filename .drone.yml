@@ -4,5 +4,5 @@ pipeline:
     commands:
       #- env
       #- export
-      - echo $SNAME
+      - echo $$NAME
     secrets: [ NAME ]
