@@ -2,7 +2,7 @@ pipeline:
   build:
     image: alpine
     commands:
-      - env
-      - export
+      #- env
+      #- export
       - echo $${NAME}
-    secrets: [ name ]
+    secrets: [ NAME ]
