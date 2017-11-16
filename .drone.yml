@@ -2,14 +2,14 @@ pipeline:
   build:
     image: alpine
     commands:
-      - export MYNAME=$name
+      - export MYNAME=$NAME
       - echo $${MYNAME}
   #    - apk update
   #    - apk add py-pip
   #    - pip install awscli
   #    - aws s3 ls
   #    - aws s3 cp README.md s3://my-sandeep-state/
-  #  secrets: [ NAME ]
+    secrets: [ NAME ]
   #s3upload:
   #  image: plugins/s3
   #  bucket: my-sandeep-state
