@@ -6,7 +6,7 @@ pipeline:
       - DST_USER=root
       - DST_ADDR=172.31.30.40
     commands:
-      - sample.war $${DST_USER}@$${DST_ADDR}:$${DST_LOC}/
+      - scp sample.war $${DST_USER}@$${DST_ADDR}:$${DST_LOC}/
     volumes:
       - /root/scp/config:/root/.ssh/config
       - /root/.ssh/id_rsa:/root/.ssh/id_rsa 
