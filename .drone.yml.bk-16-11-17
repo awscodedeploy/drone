@@ -1,22 +1,10 @@
 pipeline:
-  scp:
-    image: alpine_scp
+  build:
+    image: alpine
     environment:
-      - DST_LOC=/opt
-      - DST_USER=root
-      - DST_ADDR=172.31.30.40
+      - MYNAME=sandeepsharma
     commands:
-      - sample.war $${DST_USER}@$${DST_ADDR}:$${DST_LOC}/
-    volumes:
-      - /root/scp/config:/root/.ssh/config
-      - /root/.ssh/id_rsa:/root/.ssh/id_rsa 
-
-  #build:
-  #  image: alpine
-  #  environment:
-  #    - MYNAME=sandeepsharma
-  #  commands:
-  #    - echo $${MYNAME}
+      - echo $${MYNAME}
       #- export MYNAME=$NAME
       #- echo $${MYNAME}
   #    - apk update
