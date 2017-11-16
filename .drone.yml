@@ -18,3 +18,4 @@ pipeline:
     function_name: drone
     s3_bucket: my-sandeep-state
     file_name: cargill-${DRONE_BUILD_NUMBER}.zip
+    secrets: [AWS_REGION]
