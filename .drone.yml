@@ -8,15 +8,15 @@ pipeline:
 
   s3publish:
     image: plugins/s3
-    region: ap-south-1
+    #region: ap-south-1
     bucket: my-sandeep-state
     source: cargill-${DRONE_BUILD_NUMBER}.zip
     target: /
 
-  deploylambda:
-    image: omerxx/drone-lambda-plugin
-    function_name: drone
-    s3_bucket: my-sandeep-state
-    file_name: cargill-${DRONE_BUILD_NUMBER}.zip
+  #deploylambda:
+  #  image: omerxx/drone-lambda-plugin
+  #  function_name: drone
+  #  s3_bucket: my-sandeep-state
+  #  file_name: cargill-${DRONE_BUILD_NUMBER}.zip
     #aws_default_region: ap-south-1
-    secrets: [ AWS_DEFAULT_REGION ]
+  #  secrets: [ AWS_DEFAULT_REGION ]
