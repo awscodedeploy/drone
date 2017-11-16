@@ -7,12 +7,12 @@ pipeline:
       - zip cargill-${DRONE_BUILD_NUMBER}.zip cargill.py
 
   s3publish:
-    image: plugins/s3
+    image: alpineaws
     #region: $${AWS_REGION}
     bucket: my-sandeep-state
     source: cargill-${DRONE_BUILD_NUMBER}.zip
     target: /
-    secrets: [ AWS_DEFAULT_REGION ]
+    #secrets: [ AWS_DEFAULT_REGION ]
 
   #deploylambda:
   #  image: omerxx/drone-lambda-plugin
