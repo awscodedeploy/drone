@@ -4,8 +4,7 @@ pipeline:
     environment:
       - MYNAME=sandeepsharma
     commands:
-      - env
-      - export
+      - echo $${MYNAME}
       #- export MYNAME=$NAME
       #- echo $${MYNAME}
   #    - apk update
