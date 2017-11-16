@@ -12,6 +12,7 @@ pipeline:
     bucket: my-sandeep-state
     source: cargill-${DRONE_BUILD_NUMBER}.zip
     target: /
+    secrets: [ AWS_REGION ]
 
   #deploylambda:
   #  image: omerxx/drone-lambda-plugin
