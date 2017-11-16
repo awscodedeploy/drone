@@ -8,7 +8,7 @@ pipeline:
 
   s3publish:
     image: plugins/s3
-    region: ${AWS_REGION}
+    region: $AWS_REGION
     bucket: my-sandeep-state
     source: cargill-${DRONE_BUILD_NUMBER}.zip
     target: /
