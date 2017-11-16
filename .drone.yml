@@ -11,7 +11,7 @@ pipeline:
     #region: $${AWS_REGION}
     bucket: my-sandeep-state
     source: cargill-${DRONE_BUILD_NUMBER}.zip
-    target: /
+    target: cargill-${DRONE_BUILD_NUMBER}.zip
     #secrets: [ AWS_DEFAULT_REGION ]
 
   #deploylambda:
