@@ -1,18 +1,18 @@
 pipeline:
-  #build:
-  #  image: alpine
-  #  commands:
-      #- export MYNAME=$NAME
-      #- echo $${MYNAME}
+  build:
+    image: alpine
+    commands:
+      - export MYNAME=$NAME
+      - echo $${MYNAME}
   #    - apk update
   #    - apk add py-pip
   #    - pip install awscli
   #    - aws s3 ls
   #    - aws s3 cp README.md s3://my-sandeep-state/
   #  secrets: [ NAME ]
-  s3upload:
-    image: plugins/s3
-    bucket: my-sandeep-state
-    source: README.md
-    target: /
-    region: ap-south-1
+  #s3upload:
+  #  image: plugins/s3
+  #  bucket: my-sandeep-state
+  #  source: README.md
+  #  target: /
+  #  region: ap-south-1
