@@ -5,3 +5,9 @@ pipeline:
       - apk update
       - apk add zip
       - zip cargill.zip cargill.py
+  s3publish:
+    image: plugins/s3
+    region: ap-south-1
+    bucket: my-sandeep-state
+    source: cargill.zip
+    target: /
