@@ -10,7 +10,6 @@ pipeline:
     volumes:
       - /root/scp/config:/root/.ssh/config
       - /root/.ssh/id_rsa:/root/.ssh/id_rsa 
-    privileged: true
 
   #build:
   #  image: alpine
