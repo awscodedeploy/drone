@@ -6,13 +6,13 @@ pipeline:
       - apk add zip
       - zip cargill-${DRONE_BUILD_NUMBER}.zip cargill.py
 
-  #s3publish:
-  #  image: alpineaws
+  s3publish:
+    image: alpineaws
     #region: $${AWS_REGION}
-  #  bucket: my-sandeep-state
-    #source: cargill-${DRONE_BUILD_NUMBER}.zip
+    bucket: my-sandeep-state
+    source: cargill-${DRONE_BUILD_NUMBER}.zip
   #  source: cargill.py
-    #target: cargill-${DRONE_BUILD_NUMBER}.zip
+    target: cargill-${DRONE_BUILD_NUMBER}.zip
   #  target: cargill.py
   #  when:
   #    event: deployment
