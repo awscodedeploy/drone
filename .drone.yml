@@ -1,5 +1,23 @@
 pipeline:
-  build:
+  makezip:
     image: alpine
     commands:
-      - echo sandeep
+      - apk update
+      - apk add zip
+      - zip cargill-${DRONE_BUILD_NUMBER}.zip cargill.py
+
+  s3publish:
+    image: alpineaws
+    #region: $${AWS_REGION}
+    bucket: my-sandeep-state
+    source: cargill-${DRONE_BUILD_NUMBER}.zip
+    target: cargill-${DRONE_BUILD_NUMBER}.zip
+    #secrets: [ AWS_DEFAULT_REGION ]
+
+  #deploylambda:
+  #  image: omerxx/drone-lambda-plugin
+  #  function_name: drone
+  #  s3_bucket: my-sandeep-state
+  #  file_name: cargill-${DRONE_BUILD_NUMBER}.zip
+    #aws_default_region: ap-south-1
+  #  secrets: [ AWS_DEFAULT_REGION ]
