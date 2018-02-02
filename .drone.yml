@@ -40,7 +40,7 @@ pipeline:
     image: alpine
     commands:
       - echo this is push event
-      - executing sonar analysis
+      - echo executing sonar analysis
     when:
       event: [ push ]
       branch: [ feature/* ]
