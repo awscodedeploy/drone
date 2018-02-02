@@ -1,5 +1,5 @@
 ---
-duplicate_code: @code
+duplicate_code: &code
   image: alpine
   
 pipeline:
