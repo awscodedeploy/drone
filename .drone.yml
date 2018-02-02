@@ -1,6 +1,6 @@
 ---
 pipeline:
-  compile_code:
+  compile_code_push:
     image: alpine
     commands:
       - echo this is a push event
@@ -8,8 +8,17 @@ pipeline:
     when:
       event: [ push ]
       branch: [ feature/* ]
-  
-  code_linting:
+          
+  compile_code_pr:
+    image: alpine
+    commands:
+      - echo this is a pr event
+      - echo executing code compiling
+    when:
+      event: [ pull_request ]
+      branch: [ dev ]
+          
+  code_linting_push:
     image: alpine
     commands:
       - echo this is a push event
@@ -17,8 +26,17 @@ pipeline:
     when:
       event: [ push ]
       branch: [ feature/* ]
+          
+  code_linting_pr:
+    image: alpine
+    commands:
+      - echo this is a pr event
+      - echo executing code liniting
+    when:
+      event: [ pull_request ]
+      branch: [ dev ]
 
-  unit_testing:
+  unit_testing_push:
     image: alpine
     commands:
       - echo this is a push event
@@ -27,7 +45,16 @@ pipeline:
       event: [ push ]
       branch: [ feature/* ]
           
-  code_coverage:
+  unit_testing_pr:
+    image: alpine
+    commands:
+      - echo this is a pr event
+      - echo executing unit testing
+    when:
+      event: [ pull_request ]
+      branch: [ dev ]
+          
+  code_coverage_push:
     image: alpine
     commands:
       - echo this is a push event
@@ -36,7 +63,16 @@ pipeline:
       event: [ push ]
       branch: [ feature/* ]
           
-  sonar_analysis:
+  code_coverage_pr:
+    image: alpine
+    commands:
+      - echo this is a pr event
+      - echo executing code coverage
+    when:
+      event: [ pull_request ]
+      branch: [ dev ]
+          
+  sonar_analysis_push:
     image: alpine
     commands:
       - echo this is push event
@@ -44,3 +80,12 @@ pipeline:
     when:
       event: [ push ]
       branch: [ feature/* ]
+
+  sonar_analysis_pr:
+    image: alpine
+    commands:
+      - echo this is pr event
+      - echo executing sonar analysis
+    when:
+      event: [ pull_request ]
+      branch: [ dev ]
