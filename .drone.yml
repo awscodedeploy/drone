@@ -1,91 +1,84 @@
 ---
+duplicate_code: @code
+  image: alpine
+  
 pipeline:
   compile_code_push:
-    image: alpine
+    <<: *code
     commands:
-      - echo this is a push event
       - echo executing code compiling
     when:
       event: [ push ]
-      branch: [ feature/* ]
+      branch: [ feature/*, feature-*, dev, master ]
           
   compile_code_pr:
-    image: alpine
+    <<: *code
     commands:
-      - echo this is a pr event
       - echo executing code compiling
     when:
       event: [ pull_request ]
-      branch: [ dev ]
+      branch: [ dev, master ]
           
   code_linting_push:
-    image: alpine
+    <<: *code
     commands:
-      - echo this is a push event
       - echo executing code liniting
     when:
       event: [ push ]
-      branch: [ feature/* ]
+      branch: [ feature/*, feature-*, dev, master ]
           
   code_linting_pr:
-    image: alpine
+    <<: *code
     commands:
-      - echo this is a pr event
       - echo executing code liniting
     when:
       event: [ pull_request ]
-      branch: [ dev ]
+      branch: [ dev, master ]
 
   unit_testing_push:
-    image: alpine
+    <<: *code
     commands:
-      - echo this is a push event
       - echo executing unit testing
     when:
       event: [ push ]
-      branch: [ feature/* ]
+      branch: [ feature/*, feature-*, dev, master ]
           
   unit_testing_pr:
-    image: alpine
+    <<: *code
     commands:
-      - echo this is a pr event
       - echo executing unit testing
     when:
       event: [ pull_request ]
-      branch: [ dev ]
+      branch: [ dev, master ]
           
   code_coverage_push:
-    image: alpine
+    <<: *code
     commands:
-      - echo this is a push event
       - echo executing code coverage
     when:
       event: [ push ]
-      branch: [ feature/* ]
+      branch: [ feature/*, feature-*, dev, master ]
           
   code_coverage_pr:
-    image: alpine
+    <<: *code
     commands:
-      - echo this is a pr event
       - echo executing code coverage
     when:
       event: [ pull_request ]
-      branch: [ dev ]
+      branch: [ dev, master ]
           
   sonar_analysis_push:
-    image: alpine
+    <<: *code
     commands:
-      - echo this is push event
       - echo executing sonar analysis
     when:
       event: [ push ]
-      branch: [ feature/* ]
+      branch: [ feature/*, feature-*, dev, master ]
 
   sonar_analysis_pr:
-    image: alpine
+    <<: *code
     commands:
-      - echo this is pr event
       - echo executing sonar analysis
     when:
       event: [ pull_request ]
-      branch: [ dev ]
+      branch: [ dev, master ]
