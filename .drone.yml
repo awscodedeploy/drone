@@ -5,6 +5,7 @@ pipeline:
       - env
     when:
       event: push
+      branch: [feature*, dev]
 
   build_pr:
     image: alpine
@@ -12,3 +13,4 @@ pipeline:
       - env
     when:
       event: pull_request
+      branch: [dev]
