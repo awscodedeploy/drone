@@ -1,16 +1,46 @@
+---
 pipeline:
-  build_push:
+  compile_code:
     image: alpine
     commands:
-      - env
+      - echo this is a push event
+      - echo executing code compiling
     when:
-      event: push
-      branch: [feature/*, dev]
+      event: [ push ]
+      branch: [ feature/* ]
+  
+  code_linting:
+    image: alpine
+    commands:
+      - echo this is a push event
+      - echo executing code liniting
+    when:
+      event: [ push ]
+      branch: [ feature/* ]
 
-  build_pr:
+  unit_testing:
     image: alpine
     commands:
-      - env
+      - echo this is a push event
+      - echo executing unit testing
     when:
-      event: pull_request
-      branch: dev
+      event: [ push ]
+      branch: [ feature/* ]
+          
+  code_coverage:
+    image: alpine
+    commands:
+      - echo this is a push event
+      - echo executing code coverage
+    when:
+      event: [ push ]
+      branch: [ feature/* ]
+          
+  sonar_analysis:
+    image: alpine
+    commands:
+      - echo this is push event
+      - executing sonar analysis
+    when:
+      event: [ push ]
+      branch: [ feature/* ]
