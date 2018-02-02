@@ -1,14 +1,91 @@
+---
 pipeline:
-  build_push:
+  compile_code_push:
     image: alpine
     commands:
-      - env
+      - echo this is a push event
+      - echo executing code compiling
     when:
-      event: push
+      event: [ push ]
+      branch: [ feature/* ]
+          
+  compile_code_pr:
+    image: alpine
+    commands:
+      - echo this is a pr event
+      - echo executing code compiling
+    when:
+      event: [ pull_request ]
+      branch: [ dev ]
+          
+  code_linting_push:
+    image: alpine
+    commands:
+      - echo this is a push event
+      - echo executing code liniting
+    when:
+      event: [ push ]
+      branch: [ feature/* ]
+          
+  code_linting_pr:
+    image: alpine
+    commands:
+      - echo this is a pr event
+      - echo executing code liniting
+    when:
+      event: [ pull_request ]
+      branch: [ dev ]
 
-  build_pr:
+  unit_testing_push:
     image: alpine
     commands:
-      - env
+      - echo this is a push event
+      - echo executing unit testing
     when:
-      event: pull_request
+      event: [ push ]
+      branch: [ feature/* ]
+          
+  unit_testing_pr:
+    image: alpine
+    commands:
+      - echo this is a pr event
+      - echo executing unit testing
+    when:
+      event: [ pull_request ]
+      branch: [ dev ]
+          
+  code_coverage_push:
+    image: alpine
+    commands:
+      - echo this is a push event
+      - echo executing code coverage
+    when:
+      event: [ push ]
+      branch: [ feature/* ]
+          
+  code_coverage_pr:
+    image: alpine
+    commands:
+      - echo this is a pr event
+      - echo executing code coverage
+    when:
+      event: [ pull_request ]
+      branch: [ dev ]
+          
+  sonar_analysis_push:
+    image: alpine
+    commands:
+      - echo this is push event
+      - echo executing sonar analysis
+    when:
+      event: [ push ]
+      branch: [ feature/* ]
+
+  sonar_analysis_pr:
+    image: alpine
+    commands:
+      - echo this is pr event
+      - echo executing sonar analysis
+    when:
+      event: [ pull_request ]
+      branch: [ dev ]
