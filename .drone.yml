@@ -1,28 +1,15 @@
 pipeline:
-  makezip:
+  build_push:
     image: alpine
     commands:
-      - apk update
-      - apk add zip
-      - zip cargill-${DRONE_BUILD_NUMBER}.zip cargill.py
+      - env
+    when:
+      event: push
 
-  s3publish:
-    image: alpineaws
-    #region: $${AWS_REGION}
-    bucket: my-sandeep-state
-    source: cargill-${DRONE_BUILD_NUMBER}.zip
-  #  source: cargill.py
-    target: cargill-${DRONE_BUILD_NUMBER}.zip
-  #  target: cargill.py
-  #  when:
-  #    event: deployment
-  #    environment: production
-    #secrets: [ AWS_DEFAULT_REGION ]
-
-  #deploylambda:
-  #  image: omerxx/drone-lambda-plugin
-  #  function_name: drone
-  #  s3_bucket: my-sandeep-state
-  #  file_name: cargill-${DRONE_BUILD_NUMBER}.zip
-    #aws_default_region: ap-south-1
-  #  secrets: [ AWS_DEFAULT_REGION ]
+  build_pr:
+    image: alpine
+    commands:
+      - env
+    when:
+      event: pull_request
+      branch: dev
