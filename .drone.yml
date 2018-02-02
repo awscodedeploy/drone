@@ -13,4 +13,4 @@ pipeline:
       - env
     when:
       event: pull_request
-      branch: [dev]
+      branch: dev
