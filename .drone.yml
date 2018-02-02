@@ -1,15 +1,84 @@
+---
+duplicate_code: &code
+  image: alpine
+  
 pipeline:
-  build_push:
-    image: alpine
+  compile_code_push:
+    <<: *code
     commands:
-      - env
+      - echo executing code compiling
     when:
-      event: push
+      event: [ push ]
+      branch: [ feature/*, feature-*, dev, master ]
+          
+  compile_code_pr:
+    <<: *code
+    commands:
+      - echo executing code compiling
+    when:
+      event: [ pull_request ]
+      branch: [ dev, master ]
+          
+  code_linting_push:
+    <<: *code
+    commands:
+      - echo executing code liniting
+    when:
+      event: [ push ]
+      branch: [ feature/*, feature-*, dev, master ]
+          
+  code_linting_pr:
+    <<: *code
+    commands:
+      - echo executing code liniting
+    when:
+      event: [ pull_request ]
+      branch: [ dev, master ]
 
-  build_pr:
-    image: alpine
+  unit_testing_push:
+    <<: *code
     commands:
-      - env
+      - echo executing unit testing
     when:
-      event: pull_request
-      branch: dev
+      event: [ push ]
+      branch: [ feature/*, feature-*, dev, master ]
+          
+  unit_testing_pr:
+    <<: *code
+    commands:
+      - echo executing unit testing
+    when:
+      event: [ pull_request ]
+      branch: [ dev, master ]
+          
+  code_coverage_push:
+    <<: *code
+    commands:
+      - echo executing code coverage
+    when:
+      event: [ push ]
+      branch: [ feature/*, feature-*, dev, master ]
+          
+  code_coverage_pr:
+    <<: *code
+    commands:
+      - echo executing code coverage
+    when:
+      event: [ pull_request ]
+      branch: [ dev, master ]
+          
+  sonar_analysis_push:
+    <<: *code
+    commands:
+      - echo executing sonar analysis
+    when:
+      event: [ push ]
+      branch: [ feature/*, feature-*, dev, master ]
+
+  sonar_analysis_pr:
+    <<: *code
+    commands:
+      - echo executing sonar analysis
+    when:
+      event: [ pull_request ]
+      branch: [ dev, master ]
