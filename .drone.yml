@@ -5,7 +5,7 @@ pipeline:
       - env
     when:
       event: push
-      branch: [feature*, dev]
+      branch: [feature/*, dev]
 
   build_pr:
     image: alpine
