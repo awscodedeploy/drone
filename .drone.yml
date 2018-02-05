@@ -2,5 +2,5 @@
 pipeline:
   step1:
     image: alpine
-    command:
+    commands:
       - echo step 1
