@@ -8,5 +8,5 @@ pipeline:
     image: alpine
     commands:
       - echo step 2
-    when:
-      status: [ success ]
+    #when:
+    #  status: [ success ]
