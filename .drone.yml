@@ -3,7 +3,7 @@ pipeline:
   step1:
     image: alpine
     commands:
-      - echo step 1
+      - step 1
   step2:
     image: alpine
     commands:
