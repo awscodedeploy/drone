@@ -2,7 +2,9 @@
 pipeline:
   step1:
     image: drone-plugin
-    cmd: testing
+    cmd:
+      - testing
+      - sandeep
   #step2:
   #  image: alpine
   #  commands:
