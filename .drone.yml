@@ -1,12 +1,11 @@
 ---
 pipeline:
   step1:
-    image: alpine
-    commands:
-      - step 1
-  step2:
-    image: alpine
-    commands:
-      - echo step 2
+    image: drone-plugin
+    cmd: testing
+  #step2:
+  #  image: alpine
+  #  commands:
+  #    - echo step 2
     #when:
     #  status: [ success ]
