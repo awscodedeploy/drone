@@ -1,11 +1,11 @@
 ---
 pipeline:
   step1:
-    image: drone-plugin
+    image: alpine
     secrets: [ NAME ]
     commands:
-      - env $${NAME}
-    #cmd:
+      - env
+    #cmd:i
     #  - testing
     #  - sandeep
   #step2:
